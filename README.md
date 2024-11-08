@@ -14,7 +14,7 @@ So I decided to create a simple and easy-to-use one.
 
 ## How it works
 
-![image](https://github.com/user-attachments/assets/2c1c4026-e06d-49e4-8bee-40487849e5a3)
+![image](https://github.com/user-attachments/assets/07dbcef8-79ad-4659-8a62-072538bb4b73)
 
 
 - When the button is pressed, it opens the WhatsApp app with the number and message configured in the .env file.
