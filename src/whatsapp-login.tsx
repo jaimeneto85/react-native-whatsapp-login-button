@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, Text, Linking } from 'react-native';
+import { Pressable, Text, Linking, Alert } from 'react-native';
 import { styles } from './whatsapp-login.style';
 import { WhatsappButtonProps } from './whatsapp-login.type';
 import { WhatsappIcon } from './_icon/whatsapp.icon';
@@ -15,26 +15,25 @@ const WhatsappButton: React.FC<WhatsappButtonProps> = ({
 
   const handlePress = () => {
     if (!number || !message) {
-      console.log('Number or message not configured.');
-      // Alert.alert('Error', 'Number or message not configured.');
+      Alert.alert('Error', 'Number or message not configured.');
       return;
     }
 
-    const url = `whatsapp://send?phone=${number}&text=${encodeURIComponent(message)}`;
+    const sanitizedNumber = number.replace(/\D/g, '');
+
+    const url = `whatsapp://send?phone=${sanitizedNumber}&text=${encodeURIComponent(message)}`;
 
     Linking.canOpenURL(url)
       .then((supported) => {
         if (!supported) {
-          console.log('WhatsApp is not installed.');
-          // Alert.alert('Erro', 'WhatsApp is not installed.');
+          Alert.alert('Erro', 'WhatsApp is not installed.');
         } else {
           Linking.openURL(url)
             .then(() => {
               callBackScreen();
             })
             .catch(() => {
-              console.log('Unable to open WhatsApp.');
-              // Alert.alert('Error', 'Unable to open WhatsApp.');
+              Alert.alert('Error', 'Unable to open WhatsApp.');
             });
         }
       })

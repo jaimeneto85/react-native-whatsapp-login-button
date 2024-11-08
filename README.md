@@ -65,7 +65,7 @@ const App = () => {
 
   return <WhatsappButton 
             callBackScreen={callBackScreen}
-            whatsappNumberCore={'+5511999999999'}
+            whatsappNumberCore={'5511999999999'} // International format (only numbers)
             defaultMessageLogin={'Hello, I want to sign up'}
             buttonText={'Sign Up with WhatsApp'}
           />;
